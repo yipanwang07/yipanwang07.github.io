@@ -1,0 +1,35 @@
+/* Touch navigation stays in page flow, without clipped nested scroll areas. */
+.site-nav{position:relative;min-width:0}
+.site-nav .nav-top{column-gap:clamp(14px,2.4vw,28px);row-gap:4px;align-items:center}
+.site-nav .nav-top>li{min-width:0;max-width:100%}
+.site-nav .nav-top>li>a{display:flex;align-items:center;min-height:44px;line-height:1.4}
+.site-nav .menu-root{position:static}
+.site-nav .branch-head{display:block}
+.site-nav .branch-toggle{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:44px;padding:11px 12px;border:0;background:transparent;color:var(--ink);text-align:left;line-height:1.4;font-size:16px;touch-action:manipulation}
+.site-nav .menu-root>.branch-head>.branch-toggle{width:auto;padding:12px 0;gap:9px;font-size:15px}
+.site-nav .branch-label{min-width:0;overflow-wrap:break-word}
+.site-nav .menu-chevron{flex-shrink:0;transform:rotate(45deg);margin:0 3px 4px}
+.site-nav .is-open>.branch-head .menu-chevron{transform:rotate(225deg);margin-top:4px;margin-bottom:0}
+.site-nav .nav-panel{position:static;left:auto;right:auto;top:auto;width:auto;max-width:100%;max-height:none;padding:0;margin:0;list-style:none;box-shadow:none;overflow:visible;background:var(--surface)}
+.site-nav .nav-panel[hidden]{display:none!important}
+.site-nav .nav-panel:not([hidden]){display:block}
+.site-nav>.projects-panel{width:100%;margin:12px 0 0;padding:8px;border:1px solid var(--line);max-height:none;overflow:visible}
+.site-nav .nav-panel .nav-panel{position:static;left:auto;right:auto;top:auto!important;width:auto;border:0;border-left:1px solid var(--line);padding:0 0 0 8px;margin:0 0 8px 12px;box-shadow:none}
+.site-nav .nav-panel a{display:flex;align-items:center;min-height:44px;padding:11px 12px!important;line-height:1.45;font-size:16px;overflow-wrap:break-word}
+.site-nav .menu-overview>a{color:var(--muted);font-size:14px}
+.site-nav .branch-toggle:hover,.site-nav .nav-panel a:hover{background:var(--surface-2)}
+.site-nav .menu-root>.branch-head>.branch-toggle:hover{background:transparent;color:var(--blue)}
+.site-nav .branch-toggle:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.site-nav .theme-toggle,.landing-utilities a,.landing-utilities .theme-toggle{min-height:44px}
+.landing-utilities a,.landing-utilities .theme-toggle{display:inline-flex;align-items:center}
+/* Match the JavaScript query: fine-pointer desktop menus open to the right. */
+@media(min-width:1101px) and (min-height:501px) and (hover:hover) and (pointer:fine){
+ .site-nav .menu-branch{position:relative}
+ .site-nav .nav-panel{width:232px;border:1px solid var(--line);padding:7px;background:var(--surface);box-shadow:0 10px 30px #0002}
+ .site-nav>.projects-panel{position:absolute;z-index:30;left:var(--projects-left,0);top:var(--projects-top,100%);width:232px;max-width:none;margin:0;padding:7px;overflow:visible}
+ .site-nav .nav-panel .nav-panel{position:absolute;z-index:31;top:var(--submenu-top,-8px)!important;left:100%;right:auto;width:232px;max-width:none;border:1px solid var(--line);margin:0;padding:7px;box-shadow:0 10px 30px #0002}
+ .site-nav .nav-panel a,.site-nav .nav-panel .branch-toggle{font-size:14px}
+ .site-nav .nav-panel .menu-chevron{transform:rotate(-45deg);margin:0 3px}
+ .site-nav .nav-panel .is-open>.branch-head .menu-chevron{transform:rotate(-45deg)}
+}
+@media(max-width:560px){.site-nav .nav-top{column-gap:19px;row-gap:4px}.site-nav .menu-root>.branch-head>.branch-toggle{font-size:14px}.site-nav .theme-toggle{font-size:14px}.site-nav .nav-panel .nav-panel{margin-left:8px;padding-left:6px}}
